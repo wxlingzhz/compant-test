@@ -95,6 +95,45 @@ nav a.active {
   border-bottom-color: #4a9eff;
 }
 
+/* 侧边栏导航 */
+.sidebar-nav {
+  position: fixed;
+  left: 30px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.sidebar-nav a {
+  color: #666;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 8px 15px;
+  border-left: 3px solid #ccc;
+  transition: all 0.3s;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 0 5px 5px 0;
+}
+
+.sidebar-nav a:hover {
+  color: #4a9eff;
+  border-left-color: #4a9eff;
+  padding-left: 20px;
+  background: white;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.sidebar-nav a.active {
+  color: #4a9eff;
+  border-left-color: #4a9eff;
+  font-weight: 600;
+  background: white;
+}
+
 /* Hero 区域 */
 .hero {
   background: linear-gradient(135deg, #0b1b3f 0%, #1a3a6e 100%);
@@ -383,6 +422,10 @@ footer {
 
 /* 响应式设计 */
 @media (max-width: 768px) {
+  .sidebar-nav {
+    display: none;
+  }
+  
   .header-content {
     flex-direction: column;
     gap: 20px;
@@ -429,12 +472,12 @@ html {
 </head>
 <body>
 
-<!-- 顶部联系信息 -->
-<div class="top-bar">
-  <div class="container">
-    <span>📧 <a href="mailto:rrsong@solarringquantum.com">rrsong@solarringquantum.com</a></span>
-    <span>📞 <a href="tel:+65 63224313">+65 63224313</a></span>
-  </div>
+<!-- 侧边栏导航 -->
+<div class="sidebar-nav">
+  <a href="#home">Home</a>
+  <a href="#company">Company</a>
+  <a href="#products">Products</a>
+  <a href="#contact">Contact</a>
 </div>
 
 <!-- 主导航 -->
@@ -445,10 +488,10 @@ html {
       <p>Next-Generation Quantum Computing Solutions</p>
     </div>
     <nav>
-      <a href="#home" class="active">Home</a>
-      <a href="#company">Company</a>
-      <a href="#products">Products</a>
-      <a href="#contact">Contact</a>
+      <a href="index.html">Home</a>
+      <a href="company.html">Company</a>
+      <a href="products.html">Products</a>
+      <a href="contact.html">Contact</a>
     </nav>
   </div>
 </header>
@@ -458,8 +501,8 @@ html {
   <h2>Cryogenic Interconnect Solutions</h2>
   <p>A pioneering provider of next-generation quantum computing solutions, dedicated to transcending the limitations of classical computing.</p>
   <div class="hero-buttons">
-    <a href="#products" class="btn btn-primary">View Products</a>
-    <a href="#contact" class="btn btn-secondary">Contact Us</a>
+    <a href="products.html" class="btn btn-primary">View Products</a>
+    <a href="contact.html" class="btn btn-secondary">Contact Us</a>
   </div>
 </section>
 
@@ -571,8 +614,8 @@ html {
           <div class="contact-details">
             <h3>Phone</h3>
             <p><a href="tel: +65 63224313">O  +65 63224313</a></p>
-            <p><a href="tel: +65 63224313">M +65 93977139&nbsp;</p>
-<p style="margin-top: 5px; font-size: 14px; opacity: 0.8;">We aim to get back to you within 1 working day.</p>
+            <p><a href="tel: +65 63224313">M +65 93977139</a></p>
+            <p style="margin-top: 5px; font-size: 14px; opacity: 0.8;">We aim to get back to you within 1 working day.</p>
           </div>
         </div>
       </div>
@@ -584,19 +627,32 @@ html {
 <footer>
   <div class="footer-content">
     <div class="footer-links">
-      <a href="#home">Home</a>
-      <a href="#company">Company</a>
-      <a href="#products">Products</a>
-      <a href="#contact">Contact</a>
+      <a href="index.html">Home</a>
+      <a href="company.html">Company</a>
+      <a href="products.html">Products</a>
+      <a href="contact.html">Contact</a>
     </div>
     <p>© 2025 Solar Ring Quantum. All rights reserved.</p>
   </div>
 </footer>
 
 <script>
-// 导航栏滚动高亮
+// 页面加载时，根据当前页面高亮顶部和底部导航
+window.addEventListener('DOMContentLoaded', () => {
+  const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+  const pageNavLinks = document.querySelectorAll('nav a, .footer-links a');
+  
+  pageNavLinks.forEach(link => {
+    const linkPage = link.getAttribute('href');
+    if (linkPage === currentPage || (currentPage === '' && linkPage === 'index.html')) {
+      link.classList.add('active');
+    }
+  });
+});
+
+// 侧边栏滚动高亮
 const sections = document.querySelectorAll('section');
-const navLinks = document.querySelectorAll('nav a');
+const sidebarLinks = document.querySelectorAll('.sidebar-nav a');
 
 window.addEventListener('scroll', () => {
   let current = '';
@@ -608,7 +664,13 @@ window.addEventListener('scroll', () => {
     }
   });
 
-  navLinks.forEach(link => {
+  // 如果在最顶部，默认Home高亮
+  if (pageYOffset < 100) {
+    current = 'home';
+  }
+
+  // 更新侧边栏导航高亮
+  sidebarLinks.forEach(link => {
     link.classList.remove('active');
     if (link.getAttribute('href') === `#${current}`) {
       link.classList.add('active');
