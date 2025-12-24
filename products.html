@@ -1,127 +1,367 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <title>Solar Ring Quantum - Products</title>
-    <style>
-        body {
-            font-family: Arial;
-            margin: 0;
-            padding: 0;
-            background-color: #f7f7f7;
-        }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Our Products - Solar Ring Quantum</title>
+<style>
+/* 继承自 index.html 的全局样式 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-        .header {
-            background-color: #1c1c1c;
-            color: white;
-            padding: 20px;
-            text-align: center;
-        }
+body { 
+  font-family: 'Segoe UI', Arial, sans-serif; 
+  line-height: 1.6;
+  color: #333;
+  background-color: #fff;
+}
 
-        .nav {
-            background-color: #333;
-            padding: 10px 0;
-            text-align: center;
-        }
+/* 导航栏样式 (保持一致) */
+header {
+  background: white;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
 
-        .nav a {
-            color: white;
-            margin: 0 20px;
-            text-decoration: none;
-            font-size: 16px;
-        }
+.header-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
-        .nav a:hover {
-            text-decoration: underline;
-        }
+.logo h1 {
+  color: #0b1b3f;
+  font-size: 28px;
+  font-weight: 600;
+}
 
-        .container {
-            padding: 40px 10%;
-        }
+nav {
+  display: flex;
+  gap: 30px;
+}
 
-        .title {
-            text-align: center;
-            font-size: 28px;
-            margin-bottom: 30px;
-        }
+nav a {
+  color: #333;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 10px 0;
+  border-bottom: 3px solid transparent;
+  transition: all 0.3s;
+}
 
-        .products {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 25px;
-        }
+nav a:hover,
+nav a.active {
+  color: #4a9eff;
+  border-bottom-color: #4a9eff;
+}
 
-        .product-card {
-            background: white;
-            border-radius: 6px;
-            padding: 15px;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.15);
-            text-align: center;
-        }
+/* 页面标题区 */
+.page-hero {
+  background: linear-gradient(135deg, #0b1b3f 0%, #1a3a6e 100%);
+  color: white;
+  padding: 60px 20px;
+  text-align: center;
+}
 
-        .product-card img {
-            max-width: 100%;
-            border-radius: 4px;
-        }
+.page-hero h2 {
+  font-size: 36px;
+  margin-bottom: 15px;
+}
 
-        .product-name {
-            font-size: 18px;
-            margin-top: 10px;
-        }
+/* 产品分类导航 */
+.category-nav {
+  background: #f8f9fa;
+  padding: 20px 0;
+  border-bottom: 1px solid #eee;
+  text-align: center;
+  position: sticky;
+  top: 85px; /* header高度 */
+  z-index: 999;
+}
 
-        .footer {
-            text-align: center;
-            padding: 25px 0;
-            background-color: #222;
-            color: white;
-            margin-top: 50px;
-        }
-    </style>
+.category-nav a {
+  margin: 0 15px;
+  color: #0b1b3f;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 8px 20px;
+  border-radius: 20px;
+  border: 1px solid #0b1b3f;
+  transition: all 0.3s;
+}
+
+.category-nav a:hover {
+  background: #0b1b3f;
+  color: white;
+}
+
+/* 产品网格系统 */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 60px 20px;
+}
+
+.section-title {
+  font-size: 28px;
+  color: #0b1b3f;
+  margin-bottom: 40px;
+  padding-left: 15px;
+  border-left: 5px solid #4a9eff;
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 30px;
+  margin-bottom: 80px;
+}
+
+.product-card {
+  background: white;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.product-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.product-img-box {
+  width: 100%;
+  height: 250px;
+  background: #f0f0f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.product-img-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* 保证图片填满区域且不变形 */
+}
+
+.product-info {
+  padding: 20px;
+}
+
+.product-info h3 {
+  font-size: 18px;
+  color: #0b1b3f;
+  margin-bottom: 10px;
+}
+
+.product-info p {
+  color: #666;
+  font-size: 14px;
+}
+
+/* Footer (保持一致) */
+footer {
+  background: #0b1b3f;
+  color: white;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-bottom: 20px;
+}
+
+.footer-links a { color: white; text-decoration: none; opacity: 0.8; }
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+  .header-content { flex-direction: column; gap: 15px; }
+  .category-nav { display: flex; flex-direction: column; gap: 10px; }
+  .category-nav a { margin: 0 20%; }
+}
+</style>
 </head>
 <body>
 
-<div class="header">
-    <h1>SOLAR RING QUANTUM</h1>
-    <p>Leading Quantum Technology Innovation</p>
-</div>
-
-<div class="nav">
-    <a href="index.html">Home</a>
-    <a href="product.html">Products</a>
-    <a href="contact.html">Contact</a>
-</div>
-
-<div class="container">
-    <h2 class="title">Our Products</h2>
-
-    <div class="products">
-
-        <div class="product-card">
-            <img src="products/1.png" alt="Product 1">
-            <div class="product-name">Product 1</div>
-        </div>
-
-        <div class="product-card">
-            <img src="products/2.png" alt="Product 2">
-            <div class="product-name">Product 2</div>
-        </div>
-
-        <div class="product-card">
-            <img src="products/3.png" alt="Product 3">
-            <div class="product-name">Product 3</div>
-        </div>
-
-        <div class="product-card">
-            <img src="products/4.png" alt="Product 4">
-            <div class="product-name">Product 4</div>
-        </div>
-
+<header>
+  <div class="header-content">
+    <div class="logo">
+      <h1>Solar Ring Quantum</h1>
+      <p>Next-Generation Quantum Computing Solutions</p>
     </div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="company.html">Company</a>
+      <a href="products.html" class="active">Products</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<section class="page-hero">
+  <h2>Product Catalog</h2>
+  <p>High-performance cryogenic and superconductivity hardware</p>
+</section>
+
+<div class="category-nav">
+  <a href="#cables">Cryogenic Cables</a>
+  <a href="#superconducting">Cryogenic & Superconducting</a>
 </div>
 
-<div class="footer">
-    © 2025 Solar Ring Quantum | All Rights Reserved
-</div>
+<main class="container">
+  
+  <section id="cables">
+    <h2 class="section-title">Cryogenic Interconnect & Cables (超低温线缆)</h2>
+    <div class="products-grid">
+      <div class="product-card">
+        <div class="product-img-box">
+          <img src="img/cable-1.jpg" alt="Cable 1" onerror="this.src='https://via.placeholder.com/300x250?text=Cable+1'">
+        </div>
+        <div class="product-info">
+          <h3>Cryogenic Coaxial Cable Type A</h3>
+          <p>Low thermal conductivity for quantum applications.</p>
+        </div>
+      </div>
+      
+      <div class="product-card">
+        <div class="product-img-box">
+          <img src="img/cable-2.jpg" alt="Cable 2" onerror="this.src='https://via.placeholder.com/300x250?text=Cable+2'">
+        </div>
+        <div class="product-info"><h3>Cryogenic Coaxial Cable Type B</h3><p>Optimized for mK environments.</p></div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-img-box">
+          <img src="img/cable-3.jpg" alt="Cable 3" onerror="this.src='https://via.placeholder.com/300x250?text=Cable+3'">
+        </div>
+        <div class="product-info"><h3>Semi-Rigid Cable Assembly</h3><p>High stability signal transmission.</p></div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-img-box">
+          <img src="img/cable-4.jpg" alt="Cable 4" onerror="this.src='https://via.placeholder.com/300x250?text=Cable+4'">
+        </div>
+        <div class="product-info"><h3>NbTi Superconducting Cable</h3><p>Zero-resistance signal path.</p></div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-img-box">
+          <img src="img/cable-5.jpg" alt="Cable 5" onerror="this.src='https://via.placeholder.com/300x250?text=Cable+5'">
+        </div>
+        <div class="product-info"><h3>Flexible Cryo-Cable</h3><p>Versatile interconnect solution.</p></div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-img-box">
+          <img src="img/cable-6.jpg" alt="Cable 6" onerror="this.src='https://via.placeholder.com/300x250?text=Cable+6'">
+        </div>
+        <div class="product-info"><h3>High-Density Wiring</h3><p>Multi-channel cryogenic looms.</p></div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-img-box">
+          <img src="img/cable-7.jpg" alt="Cable 7" onerror="this.src='https://via.placeholder.com/300x250?text=Cable+7'">
+        </div>
+        <div class="product-info"><h3>Cryogenic Ribbon Cable</h3><p>Space-saving interconnects.</p></div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-img-box">
+          <img src="img/cable-8.jpg" alt="Cable 8" onerror="this.src='https://via.placeholder.com/300x250?text=Cable+8'">
+        </div>
+        <div class="product-info"><h3>Low-Noise Signal Cable</h3><p>Minimal thermal noise interference.</p></div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-img-box">
+          <img src="img/cable-9.jpg" alt="Cable 9" onerror="this.src='https://via.placeholder.com/300x250?text=Cable+9'">
+        </div>
+        <div class="product-info"><h3>Custom Cable Solution</h3><p>Tailored for specific dilution refrigerators.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="superconducting">
+    <h2 class="section-title">Cryogenic & Superconducting Products (超低温、超导产品)</h2>
+    <div class="products-grid">
+      <div class="product-card">
+        <div class="product-img-box">
+          <img src="img/super-1.jpg" alt="Superconducting 1" onerror="this.src='https://via.placeholder.com/300x250?text=Product+1'">
+        </div>
+        <div class="product-info">
+          <h3>Superconducting Attenuator</h3>
+          <p>High stability at &lt;100 mK.</p>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-img-box">
+          <img src="img/super-2.jpg" alt="Superconducting 2" onerror="this.src='https://via.placeholder.com/300x250?text=Product+2'">
+        </div>
+        <div class="product-info"><h3>Low Pass Filter</h3><p>21 sections for optimal performance.</p></div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-img-box">
+          <img src="img/super-3.jpg" alt="Superconducting 3" onerror="this.src='https://via.placeholder.com/300x250?text=Product+3'">
+        </div>
+        <div class="product-info"><h3>Cryogenic Isolator</h3><p>Signal direction control in mK range.</p></div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-img-box">
+          <img src="img/super-4.jpg" alt="Superconducting 4" onerror="this.src='https://via.placeholder.com/300x250?text=Product+4'">
+        </div>
+        <div class="product-info"><h3>Cryogenic Amplifier</h3><p>Low-noise amplification for weak signals.</p></div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-img-box">
+          <img src="img/super-5.jpg" alt="Superconducting 5" onerror="this.src='https://via.placeholder.com/300x250?text=Product+5'">
+        </div>
+        <div class="product-info"><h3>Superconducting Magnet</h3><p>Precision field control.</p></div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="footer-content">
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="company.html">Company</a>
+      <a href="products.html">Products</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <p>© 2025 Solar Ring Quantum. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+  // 平滑滚动效果
+  document.querySelectorAll('.category-nav a').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      document.querySelector(this.getAttribute('href')).scrollIntoView({
+        behavior: 'smooth'
+      });
+    });
+  });
+</script>
 
 </body>
 </html>
